@@ -51,7 +51,7 @@ A beautifully designed cross-platform mobile app to share and explore book recom
 - Node.js & Express
 - MongoDB (via Mongoose)
 - JWT Authentication
-- Multer for file uploads
+- Cloudinary for file uploads
 
 ---
 
