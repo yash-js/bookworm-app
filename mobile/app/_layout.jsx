@@ -50,4 +50,4 @@ function RootLayout() {
     <StatusBar style="dark" />
   </SafeAreaProvider>
 }
-export default Sentry.wrap(RootLayout);
+export default RootLayout
