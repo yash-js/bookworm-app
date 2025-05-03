@@ -5,16 +5,9 @@ import { StatusBar } from "expo-status-bar";
 import { useAuthStore } from "../store/authStore";
 import { useEffect } from "react";
 import { useFonts } from 'expo-font'
-import * as Sentry from 'sentry-expo';
 
 SplashScreen.preventAutoHideAsync();
 
-Sentry.init({
-  dsn: 'https://34013ae7757101d59b3151605aad236d@o4509257691299841.ingest.us.sentry.io/4509257692151808',
-  enableInExpoDevelopment: true,
-  debug: true, // optional, for verbose console logs
-  sendDefaultPii: true,
-});
 
 function RootLayout() {
   const router = useRouter()
