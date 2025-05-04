@@ -5,30 +5,21 @@ export function formatDate(dateString) {
 }
 
 export function sharedOn(dateString) {
-    const startDate = new Date(dateString);
-    const today = new Date();
-  
-    let years = today.getFullYear() - startDate.getFullYear();
-    let months = today.getMonth() - startDate.getMonth();
-    let days = today.getDate() - startDate.getDate();
-  
-    if (days < 0) {
-      months -= 1;
-      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-      days += prevMonth.getDate();
-    }
-  
-    if (months < 0) {
-      years -= 1;
-      months += 12;
-    }
-  
-    const formatUnit = (value, label) => value === 1 ? `${value} ${label}` : `${value} ${label}s`;
-  
-    const parts = [];
-    if (years > 0) parts.push(formatUnit(years, "year"));
-    if (months > 0) parts.push(formatUnit(months, "month"));
-    if (days > 0) parts.push(formatUnit(days, "day"));
-  
-    return parts.length === 0 ? "Today" : `${parts.join(', ')} ago`;
+  const startDate = new Date(dateString);
+  const today = new Date();
+
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) {
+    return "Today";
+  } else if (diffDays < 30) {
+    return diffDays === 1 ? "1 day ago" : `${diffDays} days ago`;
+  } else if (diffDays < 365) {
+    const months = Math.floor(diffDays / 30);
+    return months === 1 ? "1 month ago" : `${months} months ago`;
+  } else {
+    const years = Math.floor(diffDays / 365);
+    return years === 1 ? "1 year ago" : `${years} years ago`;
+  }
 }

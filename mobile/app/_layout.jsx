@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useAuthStore } from "../store/authStore";
 import { useEffect } from "react";
 import { useFonts } from 'expo-font'
+import * as Updates from 'expo-updates';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,6 +26,14 @@ function RootLayout() {
     }
   }, [loaded, error])
   useEffect(() => {
+    const checkForUpdate = async () => {
+      const update = await Updates.checkForUpdateAsync();
+      if (update.isAvailable) {
+        await Updates.fetchUpdateAsync();
+        await Updates.reloadAsync(); // Reloads app with new update
+      }
+    };
+    checkForUpdate();
     checkAuth()
   }, [])
 
