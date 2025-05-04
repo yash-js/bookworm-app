@@ -17,7 +17,9 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.yash8.bookWorm",
+     "config": {
       "usesCleartextTraffic": true
+     }
     },
     "web": {
       "bundler": "metro",

@@ -1,1 +1,1 @@
-export const API_URL = "http://46.183.27.208:5005/api";
+export const API_URL = "https://bookworm.api.yashpurani.com/api";
